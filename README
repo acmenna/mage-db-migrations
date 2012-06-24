@@ -1,0 +1,39 @@
+1. Install Db Migrations as a regular Magento Module. It will extend the Mage_Core_Model_Resource_Setup class
+
+2. Configure your own custom module to use Db Migrations. See for instance the following example config
+
+<config>
+    <modules>
+        <Foo_Bar>
+            <version>0.1.0</version>
+        </Foo_Bar>
+    </modules>
+    <global>
+        <models>
+	    <foo_bar>
+  		<class>Foo_Bar_Model</class>
+            </foo_bar>
+        </models>
+        <resources>
+            <foo_bar_setup>
+                <setup>
+                    <module>Foo_Bar</module>
+                    <class>Db_Migrations_Model_Resource_Setup</class>
+                </setup>
+            </foo_bar_setup>
+        </resources>    
+    </global>
+</config>
+
+
+3. The Magento core functionality only supported installer & upgrade scripts.
+Foo/Bar/sql/foo_bar_setup/mysql4-install-0.1.0.php
+Foo/Bar/sql/foo_bar_setup/mysql4-upgrade-0.1.0-0.1.1.php
+
+Now you can create your rollback scripts as well.
+
+Foo/Bar/sql/foo_bar_setup/mysql4-rollback-0.1.1-0.1.0.php
+
+4. It's time to play with your custom module's node <version> & the core_resource table and see it working!
+
+Please let me know if you find any bugs/issues.
