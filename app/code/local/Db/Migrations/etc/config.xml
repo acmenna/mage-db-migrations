@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Db_Migrations>
+            <version>0.1.0</version>
+        </Db_Migrations>
+    </modules>
+    <global>
+        <models>
+	    <db_migrations>
+  		<class>Db_Migrations_Model</class>
+            </db_migrations>
+            <core>
+                <rewrite>
+                    <resource_setup>Db_Migrations_Model_Resource_Setup</resource_setup>
+                </rewrite>
+            </core>
+        </models>       
+        <helpers />
+    </global>
+</config>
