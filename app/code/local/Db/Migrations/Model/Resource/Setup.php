@@ -240,4 +240,9 @@ class Db_Migrations_Model_Resource_Setup extends Mage_Core_Model_Resource_Setup
         return $arrRes;
     }
 
+    public function columnExists($tableName, $columnName) {
+        $select = 'SHOW COLUMNS FROM ' . $this->getTable($tableName) . ' WHERE Field = ' .  $this->getConnection()->quote($columnName);
+        $result = $this->getConnection()->fetchOne($select);
+        return !empty($result);        
+    }
 }
